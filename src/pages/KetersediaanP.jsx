@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import produkData from "../data/produk.json"; // Mengambil data JSON order
+import produkData from "../data/Produk.json"; // Mengambil data JSON order
 import ProductList from "../pertemuan-4/ProductList";
 
 export default function Produk() {

@@ -1,4 +1,4 @@
-import produkData from "../produk.json";
+import produkData from "../Produk.json";
 
 export default function FrameworkList() {
     return (
