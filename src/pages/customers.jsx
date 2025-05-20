@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import customerData from "../data/customers.json"; // Mengambil data JSON customer
+import customerData from "../data/Customers.json"; // Mengambil data JSON customer
 
 export default function Customers() {
   const [showAddCustomer, setShowAddCustomer] = useState(false); // Status form Add Customer
