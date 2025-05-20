@@ -24,7 +24,7 @@ const MainLayout = lazy(() => import('./layouts/MainLayout'));
 const AuthLayout = lazy(() => import('./layouts/AuthLayout'));
 
 
-const Orders = lazy(() => import('./pages/Orders'));
+const Orders = lazy(() => import('./pages/orders'));
 const Customers = lazy(() => import('./pages/customers'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Login = lazy(() => import('./pages/auth/Login'));
