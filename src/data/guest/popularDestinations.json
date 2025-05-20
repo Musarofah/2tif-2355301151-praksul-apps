@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "image": "src/assets/destinasi 1.jpg",
+    "location": "Vietnam Sea Beach",
+    "name": "Luxury Hotel and Resort",
+    "price": "$200",
+    "rating": 4.5,
+    "reviewCount": 85
+  },
+  {
+    "id": 2,
+    "image": "src/assets/destination 2.jpg",
+    "location": "Swiss Forest",
+    "name": "The Dreamy Mountain Hotel & Resort.",
+    "price": "$250",
+    "rating": 4.7,
+    "reviewCount": 120
+  },
+  {
+    "id": 3,
+    "image": "src/assets/destination 3.jpg",
+    "location": "Wonderful Maldives",
+    "name": "Sea Of Stars Resident In Maldives",
+    "price": "$220",
+    "rating": 4.9,
+    "reviewCount": 155
+  },
+  {
+    "id": 4,
+    "image": "src/assets/destination 4.jpg",
+    "location": "Paris, France",
+    "name": "The Paris Grand Palace & Resturent.",
+    "price": "$280",
+    "rating": 4.6,
+    "reviewCount": 95
+  }
+]

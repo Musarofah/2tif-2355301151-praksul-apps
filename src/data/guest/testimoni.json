@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Andi",
+    "avatar": "https://i.pravatar.cc/150?img=1",
+    "review": "Pengalaman menginap yang luar biasa. Fasilitas lengkap dan staf ramah.",
+    "rating": 5
+  },
+  {
+    "name": "Sari",
+    "avatar": "https://i.pravatar.cc/150?img=2",
+    "review": "Kamar sangat nyaman dan bersih. Saya pasti akan kembali lagi!",
+    "rating": 4
+  },
+  {
+    "name": "Rudi",
+    "avatar": "https://i.pravatar.cc/150?img=3",
+    "review": "Tempatnya strategis dan harga terjangkau. Cocok untuk liburan keluarga.",
+    "rating": 4
+  },
+  {
+    "name": "Dewi",
+    "avatar": "https://i.pravatar.cc/150?img=4",
+    "review": "Pelayanan terbaik! Booking mudah dan proses check-in cepat.",
+    "rating": 5
+  },
+  {
+    "name": "Budi",
+    "avatar": "https://i.pravatar.cc/150?img=5",
+    "review": "Suka banget dengan desain interior dan pemandangan dari kamar.",
+    "rating": 5
+  }
+]
