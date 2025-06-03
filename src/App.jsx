@@ -32,7 +32,7 @@ const Register = lazy(() => import('./pages/auth/Register'));
 const Forgot = lazy(() => import('./pages/auth/Forgot'));
 const Dashboard = React.lazy(() => import("./pages/Dashboard"))
 const Users = lazy(() => import('./pages/Users'));
-
+const Note = lazy(() => import('./pages/Note'));
 const Guest = lazy(() => import('./pages/guest/Guest'));
 
 const KetersediaanP = lazy(() => import('./pages/KetersediaanP'));
@@ -51,6 +51,7 @@ function App() {
             <Route path="/error-403" element={<Error403 />} />
             <Route path="/users" element={<Users />} />
             <Route path="/ketersediaanp" element={<KetersediaanP />} />
+            <Route path="/note" element={<Note />} />
           </Route>
 
           <Route element={<AuthLayout />}>

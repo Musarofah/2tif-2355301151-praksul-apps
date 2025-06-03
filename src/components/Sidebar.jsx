@@ -133,12 +133,21 @@ export default function Sidebar() {
               Users
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink id="menu-8" to="/ketersediaanp" className={menuClass}>
               <AiOutlineShoppingCart className="mr-4 text-xl" />
               Ketersediaan Produk
             </NavLink>
+          </li> */}
+
+           <li>
+            <NavLink id="menu-5" to="/note" className={menuClass}>
+              <FaUsers className="mr-4 text-xl" />
+              Note
+            </NavLink>
           </li>
+
+
           {/* Error Pages */}
           <li>
             <NavLink id="menu-5" to="/error-400" className={menuClass}>
