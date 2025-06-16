@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import customerData from "../data/Customers.json"; // Mengambil data JSON customer
+import customerData from "../data/Customers.json";
 
 export default function Customers() {
-  const [showAddCustomer, setShowAddCustomer] = useState(false); // Status form Add Customer
+  const [showAddCustomer, setShowAddCustomer] = useState(false);
   const [newCustomer, setNewCustomer] = useState({
     id: "",
     name: "",
@@ -11,152 +11,158 @@ export default function Customers() {
     loyalty: "",
   });
 
-  // Handler untuk menambahkan customer baru (sementara hanya console.log)
   const handleAddCustomer = () => {
     console.log("New Customer:", newCustomer);
-    // Di sini kamu akan menambahkan logika untuk menyimpan customer baru
-    setShowAddCustomer(false); // Menutup form setelah menambahkan customer
+    setShowAddCustomer(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewCustomer({ ...newCustomer, [name]: value });
+  };
+
+  const getLoyaltyBadgeClass = (level) => {
+    switch (level.toLowerCase()) {
+      case "gold":
+        return "badge badge-warning text-white";
+      case "silver":
+        return "badge badge-info text-white";
+      case "bronze":
+        return "badge badge-neutral text-white";
+      default:
+        return "badge";
+    }
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Customers Page</h1>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold text-gray-800">Customers Page</h1>
+        {!showAddCustomer && (
+          <button
+            className="btn bg-green-500 hover:bg-green-600 text-white"
+            onClick={() => setShowAddCustomer(true)}
+          >
+            Add New Customer
+          </button>
+        )}
+      </div>
 
-      {/* Form untuk Menambahkan Customer - hanya tampil saat tombol Add Customer diklik */}
       {showAddCustomer && (
-        <div
-          style={{
-            marginBottom: "20px",
-            padding: "20px",
-            border: "1px solid #ddd",
-            maxWidth: "400px", // Mengatur lebar maksimum form
-            margin: "auto",
-            backgroundColor: "#f9f9f9",
-            borderRadius: "5px", // Menambahkan sedikit border radius
-          }}
-        >
-        
-          <form>
-            <div style={{ marginBottom: "15px" }}> {/* Menambah jarak antar input group */}
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>ID</label>
-              <input
-                type="text"
-                placeholder="Enter customer ID"
-                value={newCustomer.id}
-                onChange={(e) => setNewCustomer({ ...newCustomer, id: e.target.value })}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
+        <form className="bg-white shadow-md rounded-lg p-6 max-w-xl mx-auto space-y-4">
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">ID</label>
+            <input
+              type="text"
+              name="id"
+              value={newCustomer.id}
+              onChange={handleInputChange}
+              className="input w-full border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter ID"
+            />
+          </div>
 
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Name</label>
-              <input
-                type="text"
-                placeholder="Enter name"
-                value={newCustomer.name}
-                onChange={(e) => setNewCustomer({ ...newCustomer, name: e.target.value })}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={newCustomer.name}
+              onChange={handleInputChange}
+              className="input w-full border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter name"
+            />
+          </div>
 
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Email</label>
-              <input
-                type="email"
-                placeholder="Enter email"
-                value={newCustomer.email}
-                onChange={(e) => setNewCustomer({ ...newCustomer, email: e.target.value })}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={newCustomer.email}
+              onChange={handleInputChange}
+              className="input w-full border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter email"
+            />
+          </div>
 
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Phone</label>
-              <input
-                type="text"
-                placeholder="Enter phone number"
-                value={newCustomer.phone}
-                onChange={(e) => setNewCustomer({ ...newCustomer, phone: e.target.value })}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">Phone</label>
+            <input
+              type="text"
+              name="phone"
+              value={newCustomer.phone}
+              onChange={handleInputChange}
+              className="input w-full border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter phone"
+            />
+          </div>
 
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Loyalty</label>
-              <select
-                value={newCustomer.loyalty}
-                onChange={(e) => setNewCustomer({ ...newCustomer, loyalty: e.target.value })}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              >
-                <option value="">Select Loyalty Level</option>
-                <option value="Bronze">Bronze</option>
-                <option value="Silver">Silver</option>
-                <option value="Gold">Gold</option>
-              </select>
-            </div>
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">Loyalty</label>
+            <select
+              name="loyalty"
+              value={newCustomer.loyalty}
+              onChange={handleInputChange}
+              className="select w-full border border-gray-300 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+              <option value="">Select Loyalty Level</option>
+              <option value="Gold">Gold</option>
+              <option value="Silver">Silver</option>
+              <option value="Bronze">Bronze</option>
+            </select>
+          </div>
 
+          <div className="flex justify-end gap-3 pt-2">
             <button
               type="button"
-              onClick={handleAddCustomer} // Menambahkan customer baru
-              style={{
-                padding: "10px 20px",
-                backgroundColor: "blue",
-                color: "white",
-                border: "none",
-                cursor: "pointer",
-                borderRadius: "5px",
-                fontSize: "16px", // Menambahkan ukuran font
-              }}
+              className="btn btn-outline border-gray-300 text-gray-700 hover:bg-gray-200"
+              onClick={() => setShowAddCustomer(false)}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="btn bg-blue-600 hover:bg-blue-700 text-white"
+              onClick={handleAddCustomer}
             >
               Add Customer
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       )}
 
-      {/* Tombol untuk Menampilkan Form Add Customer */}
-      {!showAddCustomer && (
-        <div style={{ marginBottom: "20px", textAlign: "right" }}>
-          <button
-            onClick={() => setShowAddCustomer(true)} // Menampilkan form
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "green",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-              borderRadius: "5px",
-              fontSize: "16px", // Menambahkan ukuran font
-            }}
-          >
-            Add Customer
-          </button>
-        </div>
-      )}
-
-      {/* Tabel Data Customer */}
-      <table style={{ width: "100%", border: "1px solid #ddd", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th style={{ padding: "10px", textAlign: "left" }}>ID</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Name</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Email</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Phone</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Loyalty</th>
-          </tr>
-        </thead>
-        <tbody>
-          {customerData.map((customer) => (
-            <tr key={customer.id}>
-              <td style={{ padding: "10px" }}>{customer.id}</td>
-              <td style={{ padding: "10px" }}>{customer.name}</td>
-              <td style={{ padding: "10px" }}>{customer.email}</td>
-              <td style={{ padding: "10px" }}>{customer.phone}</td>
-              <td style={{ padding: "10px" }}>{customer.loyalty}</td>
+      <div className="overflow-x-auto mt-8">
+        <table className="table w-full text-sm text-gray-800">
+          <thead className="bg-base-200 text-base-content">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Loyalty</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {customerData.map((customer) => (
+              <tr
+                key={customer.id}
+                className="hover:bg-gray-200 transition-colors"
+              >
+                <td>{customer.id}</td>
+                <td>{customer.name}</td>
+                <td>{customer.email}</td>
+                <td>{customer.phone}</td>
+                <td>
+                  <span className={getLoyaltyBadgeClass(customer.loyalty)}>
+                    {customer.loyalty}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

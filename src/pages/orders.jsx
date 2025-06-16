@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import orderData from "../data/Orders.json"; // Mengambil data JSON order
+import orderData from "../data/Orders.json";
 
 export default function Orders() {
   const [showAddOrder, setShowAddOrder] = useState(false);
@@ -14,7 +14,6 @@ export default function Orders() {
   const handleAddOrder = () => {
     console.log("New Order:", newOrder);
     setShowAddOrder(false);
-    // Di sini kamu akan menambahkan logika untuk menyimpan order baru
   };
 
   const handleInputChange = (e) => {
@@ -23,148 +22,151 @@ export default function Orders() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Orders Page</h1>
-
-      {/* Form Add New Order */}
-      {showAddOrder && (
-        <div
-          style={{
-            marginBottom: "20px",
-            padding: "20px",
-            border: "1px solid #ddd",
-            maxWidth: "400px",
-            margin: "auto",
-            backgroundColor: "#f9f9f9",
-            borderRadius: "5px",
-          }}
-        >
-       
-          <form>
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Order ID</label>
-              <input
-                type="text"
-                name="id"
-                placeholder="Enter Order ID"
-                value={newOrder.id}
-                onChange={handleInputChange}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
-
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Customer</label>
-              <input
-                type="text"
-                name="customer"
-                placeholder="Enter Customer Name"
-                value={newOrder.customer}
-                onChange={handleInputChange}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
-
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Status</label>
-              <select
-                name="status"
-                value={newOrder.status}
-                onChange={handleInputChange}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              >
-                <option value="">Select Status</option>
-                <option value="Pending">Pending</option>
-                <option value="Completed">Completed</option>
-                <option value="Cancelled">Cancelled</option>
-              </select>
-            </div>
-
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Total</label>
-              <input
-                type="number"
-                name="total"
-                placeholder="Enter Total Amount"
-                value={newOrder.total}
-                onChange={handleInputChange}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
-
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ display: "block", marginBottom: "5px", fontWeight: "bold" }}>Date</label>
-              <input
-                type="date"
-                name="date"
-                value={newOrder.date}
-                onChange={handleInputChange}
-                style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "3px", border: "1px solid #ccc" }}
-              />
-            </div>
-
-            <button
-              type="button"
-              onClick={handleAddOrder}
-              style={{
-                padding: "10px 20px",
-                backgroundColor: "blue",
-                color: "white",
-                border: "none",
-                cursor: "pointer",
-                borderRadius: "5px",
-                fontSize: "16px",
-              }}
-            >
-              Add Order
-            </button>
-          </form>
-        </div>
-      )}
-
-      {/* Tombol Add New Order */}
-      {!showAddOrder && (
-        <div style={{ marginBottom: "20px", textAlign: "right" }}>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold text-gray-800">Orders Page</h1>
+        {!showAddOrder && (
           <button
+            className="btn bg-green-500 hover:bg-green-600 text-white"
             onClick={() => setShowAddOrder(true)}
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "green",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-              borderRadius: "5px",
-              fontSize: "16px",
-            }}
           >
             Add New Order
           </button>
-        </div>
+        )}
+      </div>
+
+      {showAddOrder && (
+        <form className="bg-white shadow-md rounded-lg p-6 max-w-xl mx-auto space-y-4">
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Order ID
+            </label>
+            <input
+              type="text"
+              name="id"
+              value={newOrder.id}
+              onChange={handleInputChange}
+              className="input w-full bg-white border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter Order ID"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Customer
+            </label>
+            <input
+              type="text"
+              name="customer"
+              value={newOrder.customer}
+              onChange={handleInputChange}
+              className="input w-full bg-white border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter Customer Name"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Status
+            </label>
+            <select
+              name="status"
+              value={newOrder.status}
+              onChange={handleInputChange}
+              className="select w-full bg-white border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+              <option value="">Select Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Total
+            </label>
+            <input
+              type="number"
+              name="total"
+              value={newOrder.total}
+              onChange={handleInputChange}
+              className="input w-full bg-white border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+              placeholder="Enter Total Amount"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              Date
+            </label>
+            <input
+              type="date"
+              name="date"
+              value={newOrder.date}
+              onChange={handleInputChange}
+              className="input w-full bg-white border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+            />
+          </div>
+
+          <div className="flex justify-end gap-3 pt-2">
+            <button
+              type="button"
+              className="btn btn-outline border-gray-300 text-gray-700 hover:bg-gray-200"
+              onClick={() => setShowAddOrder(false)}
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="btn bg-blue-600 hover:bg-blue-700 text-white"
+              onClick={handleAddOrder}
+            >
+              Add Order
+            </button>
+          </div>
+        </form>
       )}
 
-      {/* Tabel Data Order */}
-      <table style={{ width: "100%", border: "1px solid #ddd", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th style={{ padding: "10px", textAlign: "left" }}>Order ID</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Customer</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Status</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Total</th>
-            <th style={{ padding: "10px", textAlign: "left" }}>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orderData.map((order) => (
-            <tr key={order.id}>
-              <td style={{ padding: "10px" }}>{order.id}</td>
-              <td style={{ padding: "10px" }}>{order.customer}</td>
-              <td style={{ padding: "10px" }}>{order.status}</td>
-              <td style={{ padding: "10px" }}>${order.total.toFixed(2)}</td>
-              <td style={{ padding: "10px" }}>{order.date}</td>
+      <div className="overflow-x-auto mt-8">
+        <table className="table w-full text-sm text-gray-800">
+          <thead className="bg-base-200 text-base-content">
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Status</th>
+              <th>Total</th>
+              <th>Date</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orderData.map((order) => (
+              <tr
+                key={order.id}
+                className="hover:bg-gray-200 text-gray-800 transition-colors"
+              >
+                <td>{order.id}</td>
+                <td>{order.customer}</td>
+                <td>
+                  <span
+                    className={`badge ${
+                      order.status === "Completed"
+                        ? "badge-success"
+                        : order.status === "Pending"
+                        ? "badge-warning"
+                        : "badge-error"
+                    }`}
+                  >
+                    {order.status}
+                  </span>
+                </td>
+                <td>${parseFloat(order.total).toFixed(2)}</td>
+                <td>{order.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
