@@ -1,6 +1,7 @@
 // src/App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HitungGajiForm from "./pages/HitungGaji";
 
 function Home() {
   return <h1>Beranda Aplikasi</h1>;
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         {/* <Route path="/pertemuan-3" element={<Main />} /> */}
         <Route path="*" element={<NotFound />} />
+        <Route path="/hitungGaji" element={<HitungGajiForm />} />
       </Routes>
     </Router>
   );
